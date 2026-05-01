@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.mohit.banking.account.producer.AccountEventProducerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-05-01T12:05:51" hostname="COMV-9180" time="0.259">
+  <properties/>
+  <testcase name="testPublishAccountCreatedEvent_Success()" classname="com.mohit.banking.account.producer.AccountEventProducerTest" time="0.259"/>
+  <system-out><![CDATA[2026-05-01T17:35:51.622+05:30  INFO 25688 --- [    Test worker] c.m.b.a.producer.AccountEventProducer    : AccountEventProducer:: publishAccountCreatedEvent method started
+2026-05-01T17:35:51.636+05:30  INFO 25688 --- [    Test worker] c.m.b.a.producer.AccountEventProducer    : AccountEventProducer:: AccountCreatedEvent published for accountId: acc-001
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

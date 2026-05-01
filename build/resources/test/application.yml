@@ -1,0 +1,16 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/bankingdb-test
+  kafka:
+    bootstrap-servers: localhost:9092
+banking:
+  kafka:
+    topics:
+      account-created: BA_ACCOUNT_CREATED_TEST
+      transaction-event: BA_TRANSACTION_EVENT_TEST
+      audit-log: BA_AUDIT_LOG_TEST
+    consumer:
+      account-group-id: BA_ACCOUNT_GRP_TEST
+      transaction-group-id: BA_TXN_GRP_TEST
+    concurrency: 1

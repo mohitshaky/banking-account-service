@@ -1,0 +1,39 @@
+server:
+  port: ${SERVER_PORT:8081}
+
+spring:
+  application:
+    name: banking-account-service
+  data:
+    mongodb:
+      uri: ${MONGO_URI:mongodb://localhost:27017/bankingdb}
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: false
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.mohit.banking.account.event"
+
+banking:
+  kafka:
+    topics:
+      account-created: ${KAFKA_TOPIC_ACCOUNT_CREATED:BA_ACCOUNT_CREATED}
+      transaction-event: ${KAFKA_TOPIC_TRANSACTION:BA_TRANSACTION_EVENT}
+      audit-log: ${KAFKA_TOPIC_AUDIT:BA_AUDIT_LOG}
+    consumer:
+      account-group-id: ${KAFKA_GROUP_ACCOUNT:BA_ACCOUNT_GRP}
+      transaction-group-id: ${KAFKA_GROUP_TRANSACTION:BA_TXN_GRP}
+    concurrency: ${KAFKA_CONCURRENCY:3}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
